@@ -4,7 +4,7 @@ from utilities.conftest import setup
 import time
 
 
-class TestA(Base):
+class TestShopping(Base):
     test_data_cost = ("41.97", "3.36")
     test_data_message = "Thank you for your order!"
 
@@ -21,16 +21,12 @@ class TestA(Base):
         log.info("Remove product")
         time.sleep(3)
         checkout_page.remove_product()
-        checkout_add_page = checkout_page.get_checkout()
+        checkout_add_page = checkout_page.open_checkout()
         checkout_add_page.fill_details()
         checkout_overview = checkout_add_page.continue_shopping()
         checkout_overview.scroll_down()
-        log.info(f"Price and tax: {checkout_overview.get_cost() == TestA.test_data_cost}")
+        log.info(f"Price and tax: {checkout_overview.get_cost() == TestShopping.test_data_cost}")
         complete_page = checkout_overview.finish_shopping()
-        log.info(f"Complete message: {complete_page.get_success_message() == TestA.test_data_message}")
-
-
-
-
-
-        time.sleep(3)
+        success_message = complete_page.get_success_message()
+        log.info(f"Complete message: {success_message == TestShopping.test_data_message}")
+        assert success_message == TestShopping.test_data_message

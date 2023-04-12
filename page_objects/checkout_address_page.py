@@ -3,7 +3,6 @@ from page_objects.checkout_overview_page import CheckoutOverviewPage
 
 
 class CheckoutAddressPage:
-    # info = {"first_name": "Michal", "last_name": "Krsik", "zip_code": "62100"}
 
     def __init__(self, driver):
         self.driver = driver

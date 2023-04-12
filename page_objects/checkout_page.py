@@ -17,7 +17,7 @@ class CheckoutPage:
         prod_page = InventoryPage(self.driver)
         return prod_page
 
-    def get_checkout(self):
+    def open_checkout(self):
         self.driver.find_element(*CheckoutPage.checkout).click()
         checkout_address_page = CheckoutAddressPage(self.driver)
         return checkout_address_page

@@ -1,7 +1,6 @@
 import inspect
 import pytest
 import logging
-#  from Screenshot import Screenshot
 from selenium.webdriver.common.by import By
 from page_objects.checkout_page import CheckoutPage
 from page_objects.login_page import LoginPage
@@ -24,12 +23,8 @@ class Base:
         logger.setLevel(logging.INFO)
         return logger
 
-    """
     def take_screenshot(self):
-        ob = Screenshot.Screenshot()
-        # todo - How to change the save path?
-        ob.full_Screenshot(self.driver, save_path=r'.', image_name='Screenshot.png')
-    """
+        self.driver.save_screenshot("screenshot.png")
 
     def log_out(self):
         self.driver.find_element(By.ID, "react-burger-menu-btn").click()

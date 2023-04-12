@@ -1,10 +1,9 @@
 from utilities.base_class import Base
 from page_objects.login_page import LoginPage
 from utilities.conftest import setup
-import time
 
 
-class TestA(Base):
+class TestScreenshot(Base):
 
     def test_screenshot(self, setup):
         log = self.get_logger()
@@ -19,5 +18,3 @@ class TestA(Base):
         login_page = self.log_out()
         log.info(login_page.get_title())
         assert login_page.get_title() == "Swag Labs"
-
-        time.sleep(3)

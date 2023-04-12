@@ -16,7 +16,7 @@ class TestMultipleAddresses(Base):
 
         inventory_page.select_x_items(1)
         checkout_page = self.open_checkout()
-        checkout_address = checkout_page.get_checkout()
+        checkout_address = checkout_page.open_checkout()
         checkout_address.fill_details(get_data["first_name"], get_data["last_name"], get_data["zip_code"])
         time.sleep(1)
 
