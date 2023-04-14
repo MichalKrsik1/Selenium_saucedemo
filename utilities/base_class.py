@@ -6,11 +6,10 @@ from page_objects.checkout_page import CheckoutPage
 from page_objects.login_page import LoginPage
 
 
-@pytest.mark.usefigtures("setup")
+@pytest.mark.usefixtures("setup")
 class Base:
 
     def get_logger(self):
-        self.driver.implicitly_wait(2)
         logger_name = inspect.stack()[1][3]
         logger = logging.getLogger(logger_name)
 

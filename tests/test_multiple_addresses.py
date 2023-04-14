@@ -8,10 +8,7 @@ import time
 class TestMultipleAddresses(Base):
 
     def test_addresses(self, get_data, setup):
-        self.driver.implicitly_wait(2)
-        log = self.get_logger()
         login_page = LoginPage(self.driver)
-        log.info("Logging into page")
         inventory_page = login_page.login()
 
         inventory_page.select_x_items(1)
@@ -20,8 +17,10 @@ class TestMultipleAddresses(Base):
         checkout_address.fill_details(get_data["first_name"], get_data["last_name"], get_data["zip_code"])
         time.sleep(1)
 
-    @pytest.fixture(params=[{"first_name": "Michal", "last_name": "Krsik", "zip_code": "62100"},
-                            {"first_name": "Petra", "last_name": "Heczkova", "zip_code": "62101"},
-                            {"first_name": "Jan", "last_name": "Brazdil", "zip_code": "62102"}])
+    @pytest.fixture(params=[
+        {"first_name": "John", "last_name": "Doe", "zip_code": "62110"},
+        {"first_name": "Lady", "last_name": "Doe", "zip_code": "62111"},
+        {"first_name": "Big", "last_name": "Boy", "zip_code": "62112"}
+    ])
     def get_data(self, request):
         return request.param

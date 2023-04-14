@@ -6,7 +6,7 @@ class CompletePage:
     def __init__(self, driver):
         self.driver = driver
 
-    finish_btn = (By.CLASS_NAME, "complete-header")
+    _finish_btn = (By.CLASS_NAME, "complete-header")
 
     def get_success_message(self):
-        return self.driver.find_element(*CompletePage.finish_btn).text
+        return self.driver.find_element(*CompletePage._finish_btn).text
